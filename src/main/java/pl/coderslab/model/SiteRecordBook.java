@@ -3,6 +3,8 @@ package pl.coderslab.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "site_record_book")
@@ -37,6 +39,9 @@ public class SiteRecordBook {
     @ManyToOne
     @JoinColumn(name = "property_developer_id")
     private User propertyDeveloper;
+
+    @OneToMany(mappedBy = "siteRecordBook")
+    private List<EntitledInSpecificSiteRecordBook> entitledInSpecificSiteRecordBook = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -108,6 +113,14 @@ public class SiteRecordBook {
 
     public void setPropertyDeveloper(User propertyDeveloper) {
         this.propertyDeveloper = propertyDeveloper;
+    }
+
+    public List<EntitledInSpecificSiteRecordBook> getEntitledInSpecificSiteRecordBook() {
+        return entitledInSpecificSiteRecordBook;
+    }
+
+    public void setEntitledInSpecificSiteRecordBook(List<EntitledInSpecificSiteRecordBook> entitledInSpecificSiteRecordBook) {
+        this.entitledInSpecificSiteRecordBook = entitledInSpecificSiteRecordBook;
     }
 
     @Override

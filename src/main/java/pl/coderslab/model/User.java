@@ -35,6 +35,12 @@ public class User {
     @OneToMany(mappedBy = "propertyDeveloper")
     private List<SiteRecordBook> siteRecordBooksWhereGivenPropertyDeveloper = new ArrayList<>();
 
+    @OneToMany(mappedBy = "authorOfEntry")
+    private List<Entry> entriesOfUser = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<EntitledInSpecificSiteRecordBook> entitledInSpecificSiteRecordBook = new ArrayList<>();
+
     public Long getId() {
         return id;
     }
@@ -89,6 +95,22 @@ public class User {
 
     public void setSiteRecordBooksWhereGivenPropertyDeveloper(List<SiteRecordBook> siteRecordBooksWhereGivenPropertyDeveloper) {
         this.siteRecordBooksWhereGivenPropertyDeveloper = siteRecordBooksWhereGivenPropertyDeveloper;
+    }
+
+    public List<Entry> getEntriesOfUser() {
+        return entriesOfUser;
+    }
+
+    public void setEntriesOfUser(List<Entry> entriesOfUser) {
+        this.entriesOfUser = entriesOfUser;
+    }
+
+    public List<EntitledInSpecificSiteRecordBook> getEntitledInSpecificSiteRecordBook() {
+        return entitledInSpecificSiteRecordBook;
+    }
+
+    public void setEntitledInSpecificSiteRecordBook(List<EntitledInSpecificSiteRecordBook> entitledInSpecificSiteRecordBook) {
+        this.entitledInSpecificSiteRecordBook = entitledInSpecificSiteRecordBook;
     }
 
     @Override
